@@ -1,0 +1,210 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.panel {
+  @include card;
+  position: sticky;
+  top: calc(#{$header-height} + #{$content-padding});
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - #{$header-height} - #{$content-padding} * 2);
+  overflow-y: auto;
+  @include custom-scrollbar;
+}
+
+.header {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.closeBtn {
+  width: 28px;
+  height: 28px;
+  @include flex-center;
+  background: none;
+  border: none;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+}
+
+.body {
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  flex: 1;
+}
+
+.footer {
+  @include flex-between;
+  padding: $space-4 $space-5;
+  border-top: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.input {
+  width: 100%;
+  padding: $space-3 $space-4;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  transition: border-color $transition-base;
+
+  &::placeholder { color: $color-text-muted; }
+  &:focus { border-color: $color-primary; outline: none; }
+}
+
+.select {
+  width: 100%;
+  padding: $space-3 $space-4;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: border-color $transition-base;
+  appearance: none;
+
+  &:focus { border-color: $color-primary; outline: none; }
+  option { background: $color-bg-elevated; }
+}
+
+.metricToggle {
+  @include flex-start;
+  gap: $space-1;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+}
+
+.metricToggleBtn {
+  flex: 1;
+  padding: $space-2;
+  border-radius: 4px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover { color: $color-text-primary; }
+}
+
+.metricToggleBtnActive {
+  background: $color-bg-overlay;
+  color: $color-text-primary;
+}
+
+.thresholdRow {
+  @include flex-start;
+  gap: $space-2;
+}
+
+.thresholdPrefix {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  font-weight: $font-weight-semibold;
+  flex-shrink: 0;
+}
+
+.thresholdUnit {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  flex-shrink: 0;
+  min-width: 20px;
+}
+
+.notifyTabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $space-2;
+}
+
+.notifyTab {
+  @include flex-center;
+  gap: $space-2;
+  padding: $space-3;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: border-color $transition-base, color $transition-base;
+
+  &:hover {
+    border-color: $color-text-muted;
+    color: $color-text-primary;
+  }
+}
+
+.notifyTabActive {
+  border-color: $color-primary;
+  color: $color-primary;
+  background: $color-primary-dim;
+}
+
+.cancelBtn {
+  padding: $space-2 $space-5;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+}
+
+.saveBtn {
+  padding: $space-2 $space-5;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-md;
+  color: #0a0a0f;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-base;
+
+  &:hover { background: $color-primary-hover; }
+}

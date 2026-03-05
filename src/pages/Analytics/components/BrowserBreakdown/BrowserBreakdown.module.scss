@@ -1,0 +1,70 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  padding: $space-5;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $space-5;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 80px 1fr 40px 50px;
+  align-items: center;
+  gap: $space-3;
+}
+
+.name {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.bar {
+  height: 6px;
+  background: $color-bg-elevated;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+
+  &--good    { background: $color-good; }
+  &--warning { background: $color-warning; }
+  &--poor    { background: $color-poor; }
+}
+
+.pct {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.lcp {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+
+  &--good    { color: $color-good; }
+  &--warning { color: $color-warning; }
+  &--poor    { color: $color-poor; }
+}

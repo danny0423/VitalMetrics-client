@@ -1,0 +1,83 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  padding: $space-5;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $space-5;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.info {
+  @include flex-between;
+}
+
+.name {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.sessions {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}
+
+.bar {
+  height: 6px;
+  background: $color-bg-elevated;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width $transition-slow;
+
+  &--good    { background: $color-good; }
+  &--warning { background: $color-warning; }
+  &--poor    { background: $color-poor; }
+}
+
+.metrics {
+  @include flex-start;
+  gap: $space-2;
+}
+
+.metricValue {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  font-variant-numeric: tabular-nums;
+  color: $color-text-secondary;
+
+  &--good    { color: $color-good; }
+  &--warning { color: $color-warning; }
+  &--poor    { color: $color-poor; }
+}
+
+.metricSep {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}

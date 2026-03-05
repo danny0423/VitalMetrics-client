@@ -1,0 +1,75 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  padding: $space-5;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $space-5;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: $space-2 $space-3;
+    text-align: left;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $color-border;
+  }
+
+  td {
+    padding: $space-3;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    border-bottom: 1px solid $color-border-subtle;
+  }
+}
+
+.row {
+  transition: background $transition-fast;
+
+  &:hover td { background: $color-bg-elevated; }
+  &:last-child td { border-bottom: none; }
+}
+
+.region {
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.sessions {
+  font-variant-numeric: tabular-nums;
+}
+
+.lcp {
+  font-variant-numeric: tabular-nums;
+  font-weight: $font-weight-semibold;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &--good    { background: $color-good-dim;    color: $color-good; }
+  &--warning { background: $color-warning-dim; color: $color-warning; }
+  &--poor    { background: $color-poor-dim;    color: $color-poor; }
+}

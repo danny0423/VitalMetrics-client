@@ -1,0 +1,103 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  overflow: hidden;
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+}
+
+.titleRow {
+  @include flex-start;
+  gap: $space-3;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.count {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: 1px $space-2;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: $space-3 $space-5;
+    text-align: left;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $color-border;
+  }
+
+  td {
+    padding: $space-3 $space-5;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    border-bottom: 1px solid $color-border-subtle;
+  }
+}
+
+.row {
+  transition: background $transition-fast;
+  &:hover td { background: $color-bg-elevated; }
+  &:last-child td { border-bottom: none; }
+}
+
+.time {
+  color: $color-text-muted;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.rule {
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.value {
+  color: $color-poor;
+  font-weight: $font-weight-semibold;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+
+  &--lcp { background: rgba(0, 208, 132, 0.1); color: $color-good; }
+  &--inp { background: rgba(245, 158, 11, 0.1); color: $color-warning; }
+  &--cls { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &--sent   { background: $color-good-dim;  color: $color-good; }
+  &--failed { background: $color-poor-dim;  color: $color-poor; }
+}

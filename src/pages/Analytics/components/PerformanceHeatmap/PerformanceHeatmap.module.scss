@@ -1,0 +1,130 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  padding: $space-5;
+}
+
+.cardHeader {
+  @include flex-between;
+  margin-bottom: $space-5;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.metricSelector {
+  @include flex-start;
+  gap: $space-1;
+  background: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+}
+
+.metricBtn {
+  padding: 3px $space-3;
+  border-radius: 4px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover { color: $color-text-primary; }
+}
+
+.metricBtnActive {
+  background: $color-bg-elevated;
+  color: $color-text-primary;
+}
+
+.heatmap {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: 48px repeat(7, 1fr);
+  gap: 3px;
+}
+
+.dayLabel {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  text-align: center;
+  padding-bottom: $space-1;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 48px repeat(7, 1fr);
+  gap: 3px;
+  align-items: center;
+}
+
+.hourLabel {
+  font-size: 10px;
+  color: $color-text-muted;
+  text-align: right;
+  padding-right: $space-2;
+  height: 16px;
+  line-height: 16px;
+}
+
+.cell {
+  height: 16px;
+  border-radius: 2px;
+  background: $color-bg-elevated;
+  transition: opacity $transition-fast;
+  cursor: default;
+
+  &:hover { opacity: 0.8; }
+
+  &--good    { background: rgba(0, 208, 132, 0.35); }
+  &--warning { background: rgba(245, 158, 11, 0.35); }
+  &--poor    { background: rgba(239, 68, 68, 0.45); }
+}
+
+.legend {
+  @include flex-start;
+  gap: $space-3;
+  margin-top: $space-3;
+  padding-top: $space-3;
+  border-top: 1px solid $color-border-subtle;
+}
+
+.legendLabel {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  margin-right: $space-2;
+}
+
+.legendDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+
+  &--good    { background: rgba(0, 208, 132, 0.35); }
+  &--warning { background: rgba(245, 158, 11, 0.35); }
+  &--poor    { background: rgba(239, 68, 68, 0.45); }
+}
+
+.legendText {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}

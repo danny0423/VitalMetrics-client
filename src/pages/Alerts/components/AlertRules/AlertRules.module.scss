@@ -1,0 +1,167 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  overflow: hidden;
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+}
+
+.titleRow {
+  @include flex-start;
+  gap: $space-3;
+}
+
+.title {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.count {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  padding: 1px $space-2;
+}
+
+.newBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-md;
+  color: #0a0a0f;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-base;
+
+  &:hover { background: $color-primary-hover; }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  @include flex-start;
+  gap: $space-4;
+  padding: $space-4 $space-5;
+  border-bottom: 1px solid $color-border-subtle;
+  transition: background $transition-fast;
+
+  &:last-child { border-bottom: none; }
+  &:hover { background: $color-bg-elevated; }
+  &--inactive { opacity: 0.45; }
+}
+
+.toggle {
+  width: 32px;
+  height: 18px;
+  border-radius: 999px;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background $transition-base, border-color $transition-base;
+
+  &--active {
+    background: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $color-text-muted;
+  transition: transform $transition-base, background $transition-base;
+
+  .toggle--active & {
+    transform: translateX(14px);
+    background: #0a0a0f;
+  }
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.name {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+  @include text-truncate;
+}
+
+.meta {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  @include text-truncate;
+}
+
+.metricBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-semibold;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  flex-shrink: 0;
+
+  &--lcp { background: rgba(0, 208, 132, 0.1); color: $color-good; }
+  &--inp { background: rgba(245, 158, 11, 0.1); color: $color-warning; }
+  &--cls { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+}
+
+.notifyIcon {
+  color: $color-text-muted;
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.actions {
+  @include flex-start;
+  gap: $space-1;
+  flex-shrink: 0;
+}
+
+.actionBtn {
+  width: 28px;
+  height: 28px;
+  @include flex-center;
+  background: none;
+  border: none;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+
+  &--danger:hover {
+    background: $color-poor-dim;
+    color: $color-poor;
+  }
+}

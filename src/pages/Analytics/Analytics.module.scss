@@ -1,0 +1,32 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  background: $color-bg-base;
+  font-family: $font-family-base;
+  width: 100%;
+}
+
+.main {
+  margin-left: $sidebar-width;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  flex: 1;
+  padding: $content-padding;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: $card-gap;
+}
