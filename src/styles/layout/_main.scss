@@ -1,0 +1,37 @@
+@use '../abstracts/variables' as *;
+
+.main-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.main-content {
+  margin-left: $sidebar-width;
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: $color-bg-base;
+  transition: margin-left $transition-slow;
+}
+
+.page-header {
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 $content-padding;
+  border-bottom: 1px solid $color-border;
+  background: $color-bg-base;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.page-body {
+  flex: 1;
+  padding: $content-padding;
+  overflow-y: auto;
+}

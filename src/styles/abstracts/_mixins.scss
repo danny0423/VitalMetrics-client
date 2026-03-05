@@ -1,0 +1,162 @@
+@use 'variables' as *;
+
+// ============================================
+// Flex helpers
+// ============================================
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+// ============================================
+// Typography
+// ============================================
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin text-label {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+// ============================================
+// Layout
+// ============================================
+@mixin content-container {
+  max-width: $max-content-width;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 $content-padding;
+}
+
+// ============================================
+// Card / Surface
+// ============================================
+@mixin card {
+  background: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+}
+
+@mixin card-elevated {
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+}
+
+// ============================================
+// Interactive states
+// ============================================
+@mixin interactive {
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base,
+    border-color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+// ============================================
+// Scrollbar
+// ============================================
+@mixin custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: $color-border transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-border;
+    border-radius: 999px;
+  }
+}
+
+// ============================================
+// Media Queries
+// ============================================
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+@mixin sm {
+  @media (max-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (max-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+// ============================================
+// Web Vitals rating color helper
+// ============================================
+@mixin rating-color($property: 'color') {
+  &.good {
+    #{$property}: $color-good;
+  }
+
+  &.warning {
+    #{$property}: $color-warning;
+  }
+
+  &.poor {
+    #{$property}: $color-poor;
+  }
+}
+
+@mixin rating-bg {
+  &.good {
+    background: $color-good-dim;
+    color: $color-good;
+  }
+
+  &.warning {
+    background: $color-warning-dim;
+    color: $color-warning;
+  }
+
+  &.poor {
+    background: $color-poor-dim;
+    color: $color-poor;
+  }
+}

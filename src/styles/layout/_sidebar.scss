@@ -1,0 +1,106 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+.sidebar {
+  width: $sidebar-width;
+  height: 100vh;
+  background: $color-bg-surface;
+  border-right: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: width $transition-slow;
+  @include custom-scrollbar;
+
+  // Logo 區
+  &__logo {
+    height: $header-height;
+    @include flex-start;
+    gap: $space-3;
+    padding: 0 $space-5;
+    border-bottom: 1px solid $color-border;
+    flex-shrink: 0;
+  }
+
+  &__logo-icon {
+    width: 24px;
+    height: 24px;
+    background: $color-primary;
+    border-radius: $radius-md;
+    @include flex-center;
+    flex-shrink: 0;
+  }
+
+  &__logo-text {
+    font-size: $font-size-md;
+    font-weight: $font-weight-semibold;
+    color: $color-text-primary;
+    @include text-truncate;
+  }
+
+  // Navigation
+  &__nav {
+    flex: 1;
+    padding: $space-4 $space-3;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    overflow-y: auto;
+    @include custom-scrollbar;
+  }
+
+  &__nav-label {
+    @include text-label;
+    padding: $space-3 $space-3 $space-2;
+    margin-top: $space-2;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__nav-item {
+    @include flex-start;
+    gap: $space-3;
+    padding: $space-2 $space-3;
+    border-radius: $radius-md;
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    transition: background $transition-base, color $transition-base;
+    cursor: pointer;
+
+    &:hover {
+      background: $color-bg-elevated;
+      color: $color-text-primary;
+    }
+
+    &--active {
+      background: $color-primary-dim;
+      color: $color-primary;
+
+      &:hover {
+        background: $color-primary-dim;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__nav-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  // 底部
+  &__footer {
+    padding: $space-3;
+    border-top: 1px solid $color-border;
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+  }
+}

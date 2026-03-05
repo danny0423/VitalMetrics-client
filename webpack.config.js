@@ -33,6 +33,10 @@ module.exports = (_env, argv) => {
           use: ['style-loader', 'css-loader'],
         },
         {
+          test: /\.(scss|sass)$/,
+          use: ['style-loader', 'css-loader', 'sass-loader'],
+        },
+        {
           test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
           type: 'asset/resource',
         },
