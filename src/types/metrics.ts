@@ -22,3 +22,9 @@ export interface TableRow {
   inp: { value: string; rating: Rating };
   cls: { value: string; rating: Rating };
 }
+
+export interface Site {
+  id: string;
+  name: string;
+  status: Rating;
+}

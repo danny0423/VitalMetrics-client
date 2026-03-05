@@ -11,19 +11,32 @@ const IconExport = () => (
 );
 
 interface PageHeaderProps {
-  selectedSite: string;
+  title?: string;
+  breadcrumb?: string;
+  selectedSite?: string;
   selectedRange: string;
   onRangeChange: (range: string) => void;
+  onExport?: () => void;
 }
 
-const PageHeader: React.FC<PageHeaderProps> = ({ selectedSite, selectedRange, onRangeChange }) => {
+const PageHeader: React.FC<PageHeaderProps> = ({
+  title = 'Dashboard',
+  breadcrumb,
+  selectedSite,
+  selectedRange,
+  onRangeChange,
+  onExport,
+}) => {
+  const displayBreadcrumb = breadcrumb ?? selectedSite;
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        <h1 className={styles.title}>Dashboard</h1>
-        <div className={styles.breadcrumb}>
-          <span className={styles.breadcrumbSite}>{selectedSite}</span>
-        </div>
+        <h1 className={styles.title}>{title}</h1>
+        {displayBreadcrumb && (
+          <div className={styles.breadcrumb}>
+            <span className={styles.breadcrumbSite}>{displayBreadcrumb}</span>
+          </div>
+        )}
       </div>
       <div className={styles.right}>
         <div className={styles.timeRangeGroup}>
@@ -37,7 +50,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({ selectedSite, selectedRange, on
             </button>
           ))}
         </div>
-        <button className={styles.exportBtn}>
+        <button className={styles.exportBtn} onClick={onExport}>
           <IconExport />
           <span>Export</span>
         </button>

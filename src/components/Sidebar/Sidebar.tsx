@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import * as styles from './Sidebar.module.scss';
 import { Rating } from '../../types/metrics';
@@ -90,14 +91,14 @@ const Sidebar: React.FC<SidebarProps> = ({
       <nav className={styles.nav}>
         <span className={styles.navLabel}>Navigation</span>
         {navItems.map((item) => (
-          <button
+          <NavLink
             key={item.id}
-            className={clsx(styles.navItem, { [styles.navItemActive]: activeNav === item.id })}
-            onClick={() => onNavChange(item.id)}
+            to={`/${item.id}`}
+            className={({ isActive }) => clsx(styles.navItem, { [styles.navItemActive]: isActive })}
           >
             <span className={styles.navIcon}>{item.icon}</span>
             <span>{item.label}</span>
-          </button>
+          </NavLink>
         ))}
 
         <span className={clsx(styles.navLabel, styles.navLabelSpaced)}>Sites</span>
