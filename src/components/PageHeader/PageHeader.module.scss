@@ -1,0 +1,96 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.header {
+  height: $header-height;
+  @include flex-between;
+  padding: 0 $content-padding;
+  border-bottom: 1px solid $color-border;
+  background: $color-bg-base;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.left {
+  @include flex-start;
+  gap: $space-3;
+}
+
+.title {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.breadcrumb {
+  @include flex-start;
+  gap: $space-2;
+
+  &::before {
+    content: '/';
+    color: $color-text-muted;
+    font-size: $font-size-sm;
+  }
+}
+
+.breadcrumbSite {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+}
+
+.right {
+  @include flex-start;
+  gap: $space-3;
+}
+
+.timeRangeGroup {
+  @include flex-start;
+  gap: $space-1;
+  background: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  padding: 3px;
+}
+
+.timeRangeBtn {
+  padding: 3px $space-3;
+  border-radius: 4px;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-secondary;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.timeRangeBtnActive {
+  background: $color-bg-elevated;
+  color: $color-text-primary;
+}
+
+.exportBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: $color-bg-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base, border-color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+    border-color: $color-text-muted;
+  }
+}

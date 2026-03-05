@@ -1,11 +1,8 @@
 import React from 'react';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 const App: React.FC = () => {
-  return (
-    <div>
-      <h1>VitalMetrics</h1>
-    </div>
-  );
+  return <Dashboard />;
 };
 
 export default App;

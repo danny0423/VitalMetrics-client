@@ -1,0 +1,93 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+.card {
+  @include card;
+  overflow: hidden;
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.cardCount {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.wrapper {
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: $space-3 $space-5;
+    text-align: left;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border-bottom: 1px solid $color-border;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: $space-3 $space-5;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    border-bottom: 1px solid $color-border-subtle;
+  }
+}
+
+.row {
+  transition: background $transition-fast;
+
+  &:hover td {
+    background: $color-bg-elevated;
+  }
+
+  &:last-child td {
+    border-bottom: none;
+  }
+}
+
+.time {
+  color: $color-text-muted;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.url {
+  color: $color-text-primary;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: $font-size-xs;
+  max-width: 300px;
+  @include text-truncate;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  font-variant-numeric: tabular-nums;
+}
+
+.badgeGood    { background: $color-good-dim;    color: $color-good; }
+.badgeWarning { background: $color-warning-dim; color: $color-warning; }
+.badgePoor    { background: $color-poor-dim;    color: $color-poor; }

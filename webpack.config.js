@@ -34,7 +34,22 @@ module.exports = (_env, argv) => {
         },
         {
           test: /\.(scss|sass)$/,
-          use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: {
+                  auto: true,
+                  localIdentName: isDevelopment
+                    ? '[local]__[hash:base64:5]'
+                    : '[hash:base64:8]',
+                },
+              },
+            },
+            'sass-loader',
+          ],
         },
         {
           test: /\.(png|jpg|jpeg|gif|svg|ico)$/,
@@ -54,10 +69,11 @@ module.exports = (_env, argv) => {
     ],
 
     devServer: {
+      host: '0.0.0.0',
       port: 3000,
       hot: true,
       historyApiFallback: true,
-      open: true,
+      open: false,
     },
 
     devtool: isDevelopment ? 'eval-source-map' : 'source-map',
