@@ -115,10 +115,10 @@ const Sidebar: React.FC<SidebarProps> = ({
       </nav>
 
       <div className={styles.footer}>
-        <button className={styles.navItem}>
+        <NavLink className={styles.navItem} to={`/settings`}>
           <span className={styles.navIcon}><IconSettings /></span>
           <span>Settings</span>
-        </button>
+        </NavLink>
       </div>
     </aside>
   );

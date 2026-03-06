@@ -1,0 +1,625 @@
+@use '../../styles/abstracts/variables' as *;
+@use '../../styles/abstracts/mixins' as *;
+
+// ============================================
+// Page Layout
+// ============================================
+.page {
+  display: flex;
+  min-height: 100vh;
+  background: $color-bg-base;
+  font-family: $font-family-base;
+  width:100%;
+}
+
+.main {
+  margin-left: $sidebar-width;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: $header-height;
+  @include flex-start;
+  padding: 0 $content-padding;
+  border-bottom: 1px solid $color-border;
+  flex-shrink: 0;
+}
+
+.headerTitle {
+  font-size: $font-size-md;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: start;
+}
+
+// ============================================
+// Tab Navigation
+// ============================================
+.tabNav {
+  padding: $space-5 $space-3;
+  border-right: 1px solid $color-border;
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  min-height: calc(100vh - #{$header-height});
+  position: sticky;
+  top: 0;
+}
+
+.tabNavItem {
+  @include flex-start;
+  gap: $space-3;
+  width: 100%;
+  padding: $space-2 $space-3;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  background: none;
+  border: none;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base,
+    border-color $transition-base;
+  text-align: left;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+
+  &--active {
+    color: $color-primary;
+    border-left-color: $color-primary;
+    background: $color-primary-dim;
+
+    &:hover {
+      background: $color-primary-dim;
+      color: $color-primary;
+    }
+  }
+}
+
+// ============================================
+// Content Area
+// ============================================
+.content {
+  padding: $content-padding;
+  min-width: 0;
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+// ============================================
+// Section Header
+// ============================================
+.sectionHeader {
+  @include flex-between;
+  align-items: flex-start;
+}
+
+.sectionTitle {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+  margin-bottom: $space-1;
+}
+
+.sectionSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.addBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: none;
+  border: 1px solid $color-primary;
+  border-radius: $radius-md;
+  color: $color-primary;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  transition: background $transition-base;
+  white-space: nowrap;
+
+  &:hover { background: $color-primary-dim; }
+}
+
+// ============================================
+// Card
+// ============================================
+.card {
+  @include card;
+  overflow: hidden;
+
+  &--danger {
+    border-color: rgba(239, 68, 68, 0.2);
+  }
+}
+
+.cardHeader {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+}
+
+.cardTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+
+  &--danger { color: $color-poor; }
+}
+
+.newKeyBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-3;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+}
+
+// ============================================
+// Table
+// ============================================
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: $space-3 $space-5;
+    text-align: left;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    color: $color-text-muted;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid $color-border;
+    white-space: nowrap;
+  }
+
+  td {
+    padding: $space-4 $space-5;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    border-bottom: 1px solid $color-border-subtle;
+    vertical-align: middle;
+  }
+}
+
+.tableRow {
+  transition: background $transition-fast;
+
+  &:hover td { background: $color-bg-elevated; }
+  &:last-child td { border-bottom: none; }
+}
+
+// ============================================
+// Site Cells
+// ============================================
+.siteName {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.siteDesc {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  margin-top: 2px;
+}
+
+.siteUrl {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+// Toggle
+.toggleRow {
+  @include flex-start;
+  gap: $space-2;
+}
+
+.toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 999px;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  transition: background $transition-base, border-color $transition-base;
+
+  &--active {
+    background: $color-primary;
+    border-color: $color-primary;
+  }
+}
+
+.toggleThumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $color-text-muted;
+  transition: transform $transition-base, background $transition-base;
+
+  .toggle--active & {
+    transform: translateX(16px);
+    background: #0a0a0f;
+  }
+}
+
+.toggleLabel {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+
+  &--active { color: $color-good; }
+}
+
+// SDK Badge
+.sdkBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 3px $space-2;
+  border-radius: $radius-sm;
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+
+  &--installed {
+    background: $color-good-dim;
+    color: $color-good;
+  }
+
+  &--notInstalled {
+    background: $color-warning-dim;
+    color: $color-warning;
+  }
+}
+
+// Actions
+.actions {
+  @include flex-start;
+  gap: $space-1;
+}
+
+.actionBtn {
+  width: 28px;
+  height: 28px;
+  @include flex-center;
+  background: none;
+  border: none;
+  border-radius: $radius-md;
+  color: $color-text-muted;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-elevated;
+    color: $color-text-primary;
+  }
+
+  &--danger:hover {
+    background: $color-poor-dim;
+    color: $color-poor;
+  }
+}
+
+// ============================================
+// SDK Installation
+// ============================================
+.sdkHeader {
+  padding: $space-5;
+  border-bottom: 1px solid $color-border;
+}
+
+.sdkTitleRow {
+  @include flex-between;
+  margin-bottom: $space-2;
+}
+
+.sdkTitle {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $color-text-primary;
+}
+
+.sdkStatus {
+  @include flex-start;
+  gap: $space-2;
+}
+
+.sdkStatusDot {
+  color: $color-good;
+  @include flex-center;
+}
+
+.sdkStatusText {
+  font-size: $font-size-xs;
+  color: $color-good;
+}
+
+.sdkSubtitle {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.codeBlock {
+  background: #080810;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+  padding: $space-5;
+  overflow-x: auto;
+  @include custom-scrollbar;
+}
+
+.codeText {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+  line-height: $line-height-loose;
+  margin: 0;
+  white-space: pre;
+}
+
+.sdkFooter {
+  padding: $space-4 $space-5;
+}
+
+.copyBtn {
+  @include flex-start;
+  gap: $space-2;
+  padding: $space-2 $space-4;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-secondary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  transition: background $transition-base, color $transition-base;
+
+  &:hover {
+    background: $color-bg-overlay;
+    color: $color-text-primary;
+  }
+}
+
+// ============================================
+// API Keys
+// ============================================
+.keyName {
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+}
+
+.keyRow {
+  @include flex-start;
+  gap: $space-3;
+}
+
+.keyValue {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: $font-size-xs;
+  color: $color-text-secondary;
+}
+
+.envBadge {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  padding: 1px $space-2;
+  border-radius: $radius-sm;
+
+  &--live { background: $color-good-dim;    color: $color-good; }
+  &--test { background: $color-warning-dim; color: $color-warning; }
+}
+
+.keyMeta {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  white-space: nowrap;
+}
+
+.revokeBtn {
+  padding: 3px $space-3;
+  background: none;
+  border: 1px solid $color-border;
+  border-radius: $radius-sm;
+  color: $color-text-muted;
+  font-size: $font-size-xs;
+  cursor: pointer;
+  transition: border-color $transition-base, color $transition-base,
+    background $transition-base;
+
+  &:hover {
+    border-color: $color-poor;
+    color: $color-poor;
+    background: $color-poor-dim;
+  }
+}
+
+// ============================================
+// Data Retention
+// ============================================
+.retentionList {
+  display: flex;
+  flex-direction: column;
+}
+
+.retentionItem {
+  @include flex-between;
+  padding: $space-5;
+  border-bottom: 1px solid $color-border-subtle;
+
+  &:last-of-type { border-bottom: none; }
+}
+
+.retentionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.retentionLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.retentionDesc {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+}
+
+.retentionSelect {
+  padding: $space-2 $space-4;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  cursor: pointer;
+  appearance: none;
+  min-width: 120px;
+  transition: border-color $transition-base;
+
+  &:focus { border-color: $color-primary; outline: none; }
+  option { background: $color-bg-elevated; }
+}
+
+.retentionNote {
+  @include flex-start;
+  gap: $space-3;
+  padding: $space-4 $space-5;
+  background: rgba(0, 208, 132, 0.04);
+  border-top: 1px solid $color-border-subtle;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  line-height: $line-height-loose;
+}
+
+.retentionNoteIcon {
+  font-size: $font-size-base;
+  color: $color-primary;
+  flex-shrink: 0;
+}
+
+// ============================================
+// Account
+// ============================================
+.formBody {
+  padding: $space-5;
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.formLabel {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-medium;
+  color: $color-text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.formInput {
+  padding: $space-3 $space-4;
+  background: $color-bg-elevated;
+  border: 1px solid $color-border;
+  border-radius: $radius-md;
+  color: $color-text-primary;
+  font-size: $font-size-sm;
+  transition: border-color $transition-base;
+
+  &::placeholder { color: $color-text-muted; }
+  &:focus { border-color: $color-primary; outline: none; }
+}
+
+.saveBtn {
+  align-self: flex-start;
+  padding: $space-2 $space-6;
+  background: $color-primary;
+  border: none;
+  border-radius: $radius-md;
+  color: #0a0a0f;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: background $transition-base;
+
+  &:hover { background: $color-primary-hover; }
+}
+
+.dangerBody {
+  @include flex-between;
+  padding: $space-5;
+  gap: $space-5;
+}
+
+.dangerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.dangerLabel {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: $color-text-primary;
+}
+
+.dangerDesc {
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  max-width: 400px;
+  line-height: $line-height-loose;
+}
+
+.deleteBtn {
+  padding: $space-2 $space-5;
+  background: $color-poor-dim;
+  border: 1px solid $color-poor;
+  border-radius: $radius-md;
+  color: $color-poor;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background $transition-base;
+
+  &:hover { background: rgba(239, 68, 68, 0.15); }
+}
