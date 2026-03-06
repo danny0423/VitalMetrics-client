@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import * as styles from './Sidebar.module.scss';
 import { Rating } from '../../types/metrics';
+import Logo from '../LogoIcon/Logo';
 
 interface SideItem {
   id: string;
@@ -25,6 +26,8 @@ interface SidebarProps {
   sites: SideItem[];
 }
 
+
+
 const IconDashboard = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
     <rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" />
@@ -33,6 +36,7 @@ const IconDashboard = () => (
     <rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" />
   </svg>
 );
+
 
 const IconPerformance = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -79,12 +83,7 @@ const Sidebar: React.FC<SidebarProps> = ({
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logo}>
-        <div className={styles.logoIcon}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M7 1L13 4V10L7 13L1 10V4L7 1Z" fill="#0a0a0f" stroke="#00d084" strokeWidth="1.2" />
-            <circle cx="7" cy="7" r="2" fill="#00d084" />
-          </svg>
-        </div>
+        <Logo/>
         <span className={styles.logoText}>VitalMetrics</span>
       </div>
 
